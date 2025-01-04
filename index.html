@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Wizard Companion App</title>
+</head>
+<body>
+    <h1>Wizard Companion App</h1>
+    <section id="character-container" class="character-container">
+        <h2>Character Details</h2>
+        <input type="text" id="inputCharacter" placeholder="Enter Character Name" required>
+        <button id="searchCharBtn">Search</button>
+        <div id="charDetails" class="details">
+            <div id="charResults"></div>
+        </div>
+    </section>
+
+    <section id="spell-container" class="spell-container">
+        <h2>Spellbook Explorer</h2>
+            <input type="text" id="inputSpell" placeholder="Enter Spell Name/Type" required>
+            <button id="searchSpellBtn">Search</button>
+            <div id="spellDetails" class="details">
+                <div id="spellResults"></div>
+            </div>
+    </section>
+
+    <section id="book-container" class="book-container">
+        <h2>Book Details</h2>
+            <input type="text" id="inputBook" placeholder="Enter Book Name/Number" required>
+            <button id="searchBookBtn">Search</button>
+            <div id="bookDetails" class="details">
+                <div id="bookResults"></div>
+            </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
