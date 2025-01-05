@@ -41,8 +41,11 @@ function displayCharacterData(characters) {
     }
     resultsContainer.innerHTML = characters.map(character => `
         <div class="character-container">
-            <h3>${character.character}</h3>
+            <h3>${character.character || "Unknown"}</h3>
+            <h4>${character.nickname || "Unknown"}</h4>
             <p><strong>House:</strong> ${character.hogwartsHouse || "Unknown"}</p>
+            <img src="${character.image}" alt="${character.character}" style="width:100px;height:auto;">
+            <h5>${character.interpretedBy || "Unknown"}</h5>
         </div>
     `).join("");
 }
