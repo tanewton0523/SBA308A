@@ -39,11 +39,11 @@ function displayCharacterData(characters) {
     }
     resultsContainer.innerHTML = characters.map(character => `
         <div class="character-container">
-            <h3>${character.character || "Unknown"}</h3>
-            <h4>${character.nickname || "Unknown"}</h4>
+            <h3>Name: ${character.character || "Unknown"}</h3>
+            <h4>Nickname: ${character.nickname || "Unknown"}</h4>
             <p><strong>House:</strong> ${character.hogwartsHouse || "Unknown"}</p>
             <img src="${character.image}" alt="${character.character}" style="width:100px;height:auto;">
-            <h5>${character.interpretedBy || "Unknown"}</h5>
+            <h5>Played by: ${character.interpretedBy || "Unknown"}</h5>
         </div>
     `).join("");
 }
@@ -85,8 +85,8 @@ function displaySpellData(spells) {
     }
     resultsContainer.innerHTML = spells.map(spell => `
         <div class="spell-container">
-            <h3>${spell.spell || "Unknown"}</h3>
-            <h4>${spell.use || "Unknown"}</h4>
+            <h3>Spell: ${spell.spell || "Unknown"}</h3>
+            <h4>Usage: ${spell.use || "Unknown"}</h4>
         </div>
     `).join("");
 }
@@ -128,7 +128,7 @@ function displayBookData(books) {
     }
     resultsContainer.innerHTML = books.map(book => `
         <div class="book-container">
-            <h3>Book ${book.id}</h3>
+            <h3>Book ${book.id || "Unknown"}</h3>
             <h3>${book.title || "Unknown"}</h3>
             <h5>${book.releaseDay || "Unknown"}</h5>
             <p>${book.description || "Unknown}</p>"}
