@@ -1,6 +1,6 @@
 document.getElementById("searchCharBtn").addEventListener("click", getCharData);
 document.getElementById("searchSpellBtn").addEventListener("click", getSpellData);
-// document.getElementById("searchBookBtn").addEventListener("click", getBookData);
+document.getElementById("searchBookBtn").addEventListener("click", getBookData);
  
 
 async function getCharData() {
@@ -92,47 +92,46 @@ function displaySpellData(spells) {
 }
 
 // Books
-// async function getCharData() {
-//     const characterName = document.getElementById("inputCharacter").value.trim();
-//     if (!characterName || characterName.length < 2) {
-//         document.getElementById("charResults").innerHTML = "Please enter at least 2 characters.";
-//         return;
-//     }
+async function getBookData() {
+    const bookName = document.getElementById("inputBook").value.trim();
+    if (!bookName || bookName.length < 2) {
+        document.getElementById("bookResults").innerHTML = "Please enter at least 2 characters.";
+        return;
+    }
 
-//     try {
-//         const response = await fetch("https://harry-potter-api-en.onrender.com/characters");
-//         if (!response.ok) {
-//             throw new Error("Failed to fetch character data");
-//         }
+    try {
+        const response = await fetch("https://harry-potter-api-en.onrender.com/books");
+        if (!response.ok) {
+            throw new Error("Failed to fetch book data");
+        }
 
-//         const data = await response.json();
+        const data = await response.json();
 
-//         const filteredCharacters = data.filter(character =>
-//             character.character && character.character.toLowerCase().includes(characterName.toLowerCase())
-//         );
+        const filteredBooks = data.filter(books =>
+            books.title && books.title.toLowerCase().includes(bookName.toLowerCase())
+        );
 
-//         displayCharacterData(filteredCharacters);
+        displayBookData(filteredBooks);
         
-//     } catch (error) {
-//         console.error("Error fetching character data:", error);
-//         document.getElementById("charResults").innerHTML =
-//             `Error: Unable to fetch data for "${characterName}". Please try again.`;
-//     }
-// }
+    } catch (error) {
+        console.error("Error fetching book data:", error);
+        document.getElementById("bookResults").innerHTML =
+            `Error: Unable to fetch data for "${bookName}". Please try again.`;
+    }
+}
 
-// function displayCharacterData(characters) {
-//     const resultsContainer = document.getElementById("charResults");
-//     if (!characters.length) {
-//         resultsContainer.innerHTML = "No characters with that name found. Please try a different name.";
-//         return;
-//     }
-//     resultsContainer.innerHTML = characters.map(character => `
-//         <div class="character-container">
-//             <h3>${character.character || "Unknown"}</h3>
-//             <h4>${character.nickname || "Unknown"}</h4>
-//             <p><strong>House:</strong> ${character.hogwartsHouse || "Unknown"}</p>
-//             <img src="${character.image}" alt="${character.character}" style="width:100px;height:auto;">
-//             <h5>${character.interpretedBy || "Unknown"}</h5>
-//         </div>
-//     `).join("");
-// }
+function displayBookData(books) {
+    const resultsContainer = document.getElementById("bookResults");
+    if (!books.length) {
+        resultsContainer.innerHTML = "No books with that name found. Please try a different name.";
+        return;
+    }
+    resultsContainer.innerHTML = books.map(book => `
+        <div class="book-container">
+            <h3>Book ${book.id}</h3>
+            <h3>${book.title || "Unknown"}</h3>
+            <h5>${book.releaseDay || "Unknown"}</h5>
+            <p>${book.description || "Unknown}</p>"}
+        </div>
+    `).join("");
+}
